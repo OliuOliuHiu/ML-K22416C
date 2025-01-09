@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Cấu hình MySQL
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '@Obama123'
+app.config['MYSQL_PASSWORD'] = '123'
 app.config['MYSQL_DB'] = 'studentmanagement'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_PORT'] = 3306  # Cổng MySQL (nếu không phải 3306, hãy thay đổi)
