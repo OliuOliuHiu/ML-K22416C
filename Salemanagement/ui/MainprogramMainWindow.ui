@@ -44,8 +44,61 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuH_th_ng">
+    <property name="title">
+     <string>Hệ thống</string>
+    </property>
+    <addaction name="actionthongtintaikhoan"/>
+    <addaction name="separator"/>
+    <addaction name="actiondoimatkhau"/>
+    <addaction name="separator"/>
+    <addaction name="actioncauhinhhethong"/>
+    <addaction name="separator"/>
+    <addaction name="actionthoatphanmem"/>
+    <addaction name="separator"/>
+   </widget>
+   <addaction name="menuH_th_ng"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionthongtintaikhoan">
+   <property name="icon">
+    <iconset>
+     <normaloff>../image/ic_thongtintaikhoan.png</normaloff>../image/ic_thongtintaikhoan.png</iconset>
+   </property>
+   <property name="text">
+    <string>Thông tin tài khoản</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actiondoimatkhau">
+   <property name="icon">
+    <iconset>
+     <normaloff>../image/ic_doimatkhau.png</normaloff>../image/ic_doimatkhau.png</iconset>
+   </property>
+   <property name="text">
+    <string>Đổi mật khẩu</string>
+   </property>
+  </action>
+  <action name="actioncauhinhhethong">
+   <property name="icon">
+    <iconset>
+     <normaloff>../image/ic_cauhinh.png</normaloff>../image/ic_cauhinh.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cấu hình hệ thống</string>
+   </property>
+  </action>
+  <action name="actionthoatphanmem">
+   <property name="icon">
+    <iconset>
+     <normaloff>../image/ic_exit.png</normaloff>../image/ic_exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Thoát phần mềm</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

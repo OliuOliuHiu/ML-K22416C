@@ -30,5 +30,3 @@ except Exception as e:
 
 finally:
     print("Execution complete")
-
-'hello'

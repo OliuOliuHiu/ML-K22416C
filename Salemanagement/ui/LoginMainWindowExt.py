@@ -1,34 +1,47 @@
-from PyQt6.QtWidgets import QMessageBox, QMainWindow
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QMainWindow, QMessageBox
+
+from Salemanagement.libs.nhanvienconnector import NhanVienConnector
 from Salemanagement.ui.LoginMainWindow import Ui_MainWindow
-from Salemanagement.ui.MainprogramMainWindow import Ui_MainWindow as MainProgramWindow
+from Salemanagement.ui.MainprogramMainWindowExt import MainProgramMainWindowExt
 
 
 class LoginMainWindowExt(Ui_MainWindow):
     def __init__(self):
-        super().__init__()
-        self.main_window = None  # Để lưu màn hình chính
-
+        self.nvconnector = NhanVienConnector()
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)
-        self.MainWindow = MainWindow  # Lưu tham chiếu đến cửa sổ chính
-        self.signinButton.clicked.connect(self.handle_login)  # Gắn sự kiện cho nút "Đăng nhập"
+        self.MainWindow = MainWindow
+        self.SetupSignalAndSlot()
+    def showWindow(self):
+        self.MainWindow.show()
 
-    def handle_login(self):
-        # Lấy thông tin đăng nhập
-        username = self.Line_Edit_usernam.text()
-        password = self.Line_Edit_password.text()
+    def SetupSignalAndSlot(self):
+        self.signinButton.clicked.connect(self.xuly_dangnhap)
 
-        # Kiểm tra đăng nhập tạm thời
-        if username == "admin" and password == "123":
-            QMessageBox.information(self.MainWindow, "Thông báo", "Đăng nhập thành công!")
-            self.show_main_program()  # Chuyển sang giao diện chính
-        else:
-            QMessageBox.warning(self.MainWindow, "Lỗi", "Sai tên đăng nhập hoặc mật khẩu!")
+    def xuly_dangnhap(self):
+        try:
+            username = self.Line_Edit_username.text().strip()
+            password = self.Line_Edit_password.text().strip()
 
-    def show_main_program(self):
-        # Hiển thị giao diện màn hình chính
-        self.main_window = QMainWindow()
-        main_program_ui = MainProgramWindow()
-        main_program_ui.setupUi(self.main_window)
-        self.main_window.show()
-        self.MainWindow.close()  # Đóng giao diện đăng nhập
+            self.nvconnector.connect()
+            self.nvlogin = self.nvconnector.dang_nhap(username, password)
+
+            if self.nvlogin != None:
+            # if username == 'admin' and password == '123':
+                print("Đăng nhập thành công")
+                self.MainWindow.hide()
+                self.mainwindow = QMainWindow()
+                self.myui = MainProgramMainWindowExt()
+                self.myui.setupUi(self.mainwindow)
+                self.myui.showWindow()
+            else:
+                print("Đăng nhập thất bại ")
+                self.msg = QMessageBox()
+                self.msg.setWindowTitle('Login Thất Bại')
+                self.msg.setText('Sai username hoặc password. Vui lòng thử lại.')
+                self.msg.setIcon(QMessageBox.Icon.Critical)
+                self.msg.exec()
+        except Exception as e:
+            print(f" Lỗi xảy ra: {e}")
+

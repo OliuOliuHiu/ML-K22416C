@@ -50,7 +50,7 @@
      <string>User name:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Line_Edit_usernam">
+   <widget class="QLineEdit" name="Line_Edit_username">
     <property name="geometry">
      <rect>
       <x>210</x>
