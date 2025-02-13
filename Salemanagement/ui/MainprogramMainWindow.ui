@@ -57,7 +57,18 @@
     <addaction name="actionthoatphanmem"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuQu_n_l">
+    <property name="title">
+     <string>Quản lý</string>
+    </property>
+    <addaction name="actionQuanLySanPhamDanhMuc"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuanLyDonHang"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuanLyNhanVien"/>
+   </widget>
    <addaction name="menuH_th_ng"/>
+   <addaction name="menuQu_n_l"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionthongtintaikhoan">
@@ -97,6 +108,33 @@
    </property>
    <property name="text">
     <string>Thoát phần mềm</string>
+   </property>
+  </action>
+  <action name="actionQuanLySanPhamDanhMuc">
+   <property name="icon">
+    <iconset>
+     <normaloff>../image/ic_quanly_sanpham.png</normaloff>../image/ic_quanly_sanpham.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quản lý sản phẩm - danh mục</string>
+   </property>
+  </action>
+  <action name="actionQuanLyDonHang">
+   <property name="icon">
+    <iconset>
+     <normaloff>../image/ic_quanlydonhang.png</normaloff>../image/ic_quanlydonhang.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quản lý đơn hàng</string>
+   </property>
+  </action>
+  <action name="actionQuanLyNhanVien">
+   <property name="icon">
+    <iconset>
+     <normaloff>../image/ic_quanly_nhanvien.png</normaloff>../image/ic_quanly_nhanvien.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quản lý nhân viên</string>
    </property>
   </action>
  </widget>
