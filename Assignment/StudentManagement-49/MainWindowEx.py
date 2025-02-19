@@ -8,7 +8,7 @@ from MainWindow import Ui_MainWindow
 class MainWindowEx(Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        self.default_avatar="images/ic_no_avatar.png"
+        self.default_avatar="./images/ic_no_avatar.png"
         self.id = None
         self.code = None
         self.name = None
@@ -96,7 +96,7 @@ class MainWindowEx(Ui_MainWindow):
                     pixmap.loadFromData(imgdata)
                     self.labelAvatar.setPixmap(pixmap)
                 else:
-                    pixmap = QPixmap("images/ic_no_avatar.png")
+                    pixmap = QPixmap("./images/ic_no_avatar.png")
 
                     self.labelAvatar.setPixmap(pixmap)
             else:
