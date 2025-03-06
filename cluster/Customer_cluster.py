@@ -6,20 +6,20 @@ import seaborn as sns
 from sklearn.cluster import KMeans
 from connector import MySQLConnector
 
-# ✅ Kết nối MySQL
+# Kết nối MySQL
 def getConnect():
     connector = MySQLConnector(server="localhost", port=3306, database="sakila",
                                username="root", password="123456")
     return connector.connect()
 
-# ✅ Hàm truy vấn dữ liệu
+# Hàm truy vấn dữ liệu
 def queryDataset(conn, sql):
     cursor = conn.cursor()
     cursor.execute(sql)
     df = pd.DataFrame(cursor.fetchall(), columns=[i[0] for i in cursor.description])
     return df
 
-# ✅ Truy vấn dữ liệu từ MySQL
+# Truy vấn dữ liệu từ MySQL
 conn = getConnect()
 sql = """
 SELECT c.customer_id, 
