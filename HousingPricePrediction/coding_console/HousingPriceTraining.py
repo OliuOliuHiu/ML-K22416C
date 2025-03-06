@@ -41,5 +41,5 @@ print('MSE:', metrics.mean_squared_error(y_test, predictions))
 print('RMSE:', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
 
 import pickle
-modelname="../TrainedModel/housingmodel6.zip"
+modelname="../TrainedModel/housingmodel7.zip"
 pickle.dump(lm, open(modelname, 'wb'))
