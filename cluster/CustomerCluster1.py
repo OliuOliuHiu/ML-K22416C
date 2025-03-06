@@ -13,7 +13,7 @@ def getConnect():
     return connector.connect()
 
 
-# Hàm truy vấn MySQL
+#  Hàm truy vấn MySQL
 def queryDataset(conn, sql):
     cursor = conn.cursor()
     cursor.execute(sql)
@@ -75,11 +75,11 @@ def runKMeans(X, cluster):
     return model.labels_, model.cluster_centers_
 
 
-X = df2[['Age', 'Spending Score']].values
+X = df2[['Age', 'Annual Income', 'Spending Score']].values
 df2["cluster"], centroids = runKMeans(X, 4)
 
 
-# Hàm vẽ scatter plot
+# Hàm vẽ scatter plot 2D
 def visualizeKMeans(X, y_kmeans, cluster, title, xlabel, ylabel):
     plt.figure(figsize=(10, 10))
     colors = ["red", "green", "blue", "purple", "black"]
@@ -94,9 +94,28 @@ def visualizeKMeans(X, y_kmeans, cluster, title, xlabel, ylabel):
     plt.show()
 
 
-visualizeKMeans(X, df2["cluster"].values, 4, "Clusters of Customers", "Age", "Spending Score")
+visualizeKMeans(X[:, [0, 2]], df2["cluster"].values, 4, "Clusters of Customers", "Age", "Spending Score")
 
-# Hàm hiển thị danh sách khách hàng theo cụm
+
+# Hàm vẽ biểu đồ 3D K-Means
+def visualize3DKmeans(df, columns):
+    fig = px.scatter_3d(df,
+                        x=columns[0],
+                        y=columns[1],
+                        z=columns[2],
+                        color='cluster',
+                        title="3D Visualization of Customer Clusters",
+                        labels={columns[0]: columns[0], columns[1]: columns[1], columns[2]: columns[2]},
+                        opacity=0.8)
+    fig.show()
+
+
+# Hiển thị biểu đồ 3D
+columns_3d = ['Age', 'Annual Income', 'Spending Score']
+visualize3DKmeans(df2, columns_3d)
+
+
+#Hàm hiển thị danh sách khách hàng theo cụm
 def print_cluster_details(conn, df2):
     unique_clusters = df2["cluster"].unique()
 
