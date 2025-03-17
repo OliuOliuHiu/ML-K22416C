@@ -1,14 +1,12 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 
-from Salemanagement.libs.nhanvienconnector import NhanVienConnector
-from Salemanagement.ui.LoginMainWindow import Ui_MainWindow
-from Salemanagement.ui.MainprogramMainWindowExt import MainProgramMainWindowExt
+from FinalProject.UI.FINAL_LOGIN import Ui_MainWindow
 
 
 class LoginMainWindowExt(Ui_MainWindow):
     def __init__(self):
-        self.nvconnector = NhanVienConnector()
+        self.adconnector = adminConnector()
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)
         self.MainWindow = MainWindow
